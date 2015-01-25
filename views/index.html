@@ -1,0 +1,41 @@
+{% extends '_template.html' %}
+
+{% block title %}Media{% endblock %}
+
+{% block head %}
+  {% parent %}
+  
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-3">
+			<h4>Mexico</h4>
+			<div class="block">
+				<span class="glyphicon glyphicon-calendar"></span> <span class="mexico-date"></span>
+			</div>
+			<div class="block">
+				<span class="glyphicon glyphicon-time"></span> <span class="mexico-time"></span>
+			</div>
+			<div class="block">
+				<span class="glyphicon glyphicon-usd"></span> <span class="exchange-rate"></span>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<h4>Home Control</h4>
+			<div class="block">
+				<span class="block">Light</span> <button class="btn btn-primary">On</button>
+			</div>
+			<div class="spacer"></div>
+			<div class="block">
+				<span class="block">Blinds</span> <button class="btn btn-primary">Open</button> <button class="btn btn-default">Close</button>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block foot %}
+<script src="resources/js/moment/moment.js"></script>
+<script src="resources/js/moment/moment-timezone.js"></script>
+<script src="resources/js/controls/index.js"></script>
+<!-- in page scripts here -->
+{% endblock %}
