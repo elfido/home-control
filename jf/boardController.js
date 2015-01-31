@@ -1,5 +1,5 @@
 var jf = require("johnny-five"),
-	board = new jf.Board(),
+	board = new jf.Board({repl: false}),
 	relay = null,
 	temperatureSensor = null,
 	tempData = null;
