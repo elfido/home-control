@@ -2,10 +2,16 @@
 A combo of NodeJS + Express + Swig; jQuery + Bootstrap + CanJS + Underscore
 
 ##Dependencies
-Grunt
-Bower
+Grunt (install it globally with "sudo npm install -g grunt-cli")
+Bower (install it globally with "sudo npm install -g bower")
 
 ##Init
-npm install
-grunt
+Only the first time:
+* npm install
+* bower install
+* grunt
+
+Then to execute:
+node index
+
 # home-control
