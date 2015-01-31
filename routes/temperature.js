@@ -1,6 +1,9 @@
 var Temperature = {
+	setBoardController: function(boardController){
+		Temperature.board = boardController;
+	},
 	getTemperature: function(req, res){
-		var temp = (typeof this.temperature!="undefined") ? this.temperature : 0;
+		var temp = Temperature.board.getTemperature();
 		res.send({temperature: Math.floor(temp)});
 	},
 	setTemperature: function(req, res){

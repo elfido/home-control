@@ -4,7 +4,9 @@ var express = require('express'),
 	morgan = require('morgan'), //logger
 	bodyParser = require('body-parser'),
 	temperature = require('./routes/temperature'),
+	relay = require('./routes/relay')
 	currency = require('./routes/currency'),
+	boardController = require('./jf/boardController'),
 	app = express(),
 	configuration = {
 		server: {
@@ -18,10 +20,11 @@ var views = [
 
 var homeCenter = {
 	initAPI: function(){
-		//start routs here
+		//start routes here
 		var api = "/fido/api";
 		app.get(api+'/temperature', temperature.getTemperature);
-		app.put(api+'/temperature/:temperature', temperature.setTemperature);
+
+		app.put(api+'/outlet/:outletId', relay.swap);
 
 		app.get(api+'/exchange', currency.getPesoExchange);
 	},
@@ -46,8 +49,13 @@ var homeCenter = {
 		swig.setDefaults({ cache: false });
 		app.use(express.static(__dirname+'/public'));
 	},
+	initHome: function(){
+		temperature.setBoardController(boardController);
+		relay.setBoardController(boardController);
+	},
 	init: function(){
 		this.expressSetup();
+		this.initHome();
 		this.initAPI();
 		this.initViews();
 		app.listen(configuration.server.port);
